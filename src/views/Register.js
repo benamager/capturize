@@ -5,9 +5,22 @@ import CustomInput from '../components/CustomInput'
 import CustomButton from '../components/CustomButton'
 import { signUpValidation } from "../schemas/signUpValidation"
 import useNavigation from '../hooks/useNavigation'
+import useAxios from '../hooks/useAxios'
+
+import Constants from "expo-constants";
+//console.log(Constants.expoConfig.extra.apiUrl);
 
 export default function Register({ navigation }) {
   const { navigate } = useNavigation({ navigation })
+  const { response, error, loading, request } = useAxios("http://10.160.211.246:1337/api/auth/local/register");
+
+  async function handleRegister(formData) {
+    console.log("Now running handleRegister")
+    await request("post", formData);
+  }
+
+  // console.log(response)
+  // console.log(error?.response.status)
 
   return (
     <View className="px-6 justify-center mt-[100]">
@@ -19,12 +32,13 @@ export default function Register({ navigation }) {
         <Formik
           validationSchema={signUpValidation}
           initialValues={{
-            fullName: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
+            fullName: "Ben Nie",
+            username: "yoyo",
+            email: "yo@yo.yo",
+            password: "Yo&21GFs",
+            confirmPassword: "Yo&21GFs",
           }}
-          onSubmit={values => console.log(values)}
+          onSubmit={formData => handleRegister(formData)}
         >
           {({ handleSubmit, isValid, values }) => (
             <>
@@ -32,6 +46,11 @@ export default function Register({ navigation }) {
                 component={CustomInput}
                 name="fullName"
                 placeholder="Full Name"
+              />
+              <Field
+                component={CustomInput}
+                name="username"
+                placeholder="Username"
               />
               <Field
                 component={CustomInput}

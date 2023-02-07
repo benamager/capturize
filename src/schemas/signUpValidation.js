@@ -5,6 +5,10 @@ export const signUpValidation = yup.object().shape({
     .string()
     .matches(/(\w.+\s).+/, 'Enter at least 2 names')
     .required('Full name is required'),
+  username: yup
+    .string()
+    .min(4, ({ min }) => `username must be at least ${min} characters`)
+    .required('Username is required'),
   email: yup
     .string()
     .email("Please enter valid email")
