@@ -41,8 +41,18 @@ const useAsyncStorage = (key) => {
     }
   };
 
+  // Function to retrieve data from async storage
+  const deleteData = async () => {
+    try {
+      // Get the data from the async storage using the given key
+      const retrievedValue = await AsyncStorage.removeItem(key);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   // Return the value, saveData, and retrieveData functions
-  return { value, saveData, retrieveData };
+  return { value, saveData, retrieveData, deleteData };
 };
 
 export default useAsyncStorage;

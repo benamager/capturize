@@ -6,27 +6,22 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [authContext, setAuthContext] = useState({
     isAuthenticated: false,
-    jwt: null
+    jwt: null,
+    expiredAt: null
   });
 
-  const { value: retrievedAuthContext, retrieveData } = useAsyncStorage("@instagrim-auth");
-  retrieveData()
+  const { value: retrievedAuthContext, retrieveData, saveData } = useAsyncStorage("@instagrim-auth");
+
+  useEffect(() => {
+    retrieveData()
+  }, [])
 
   // on load, get auth data, if exist, set to context
   useEffect(() => {
     if (retrievedAuthContext) {
-      console.log("now setting authContext from storage key @instagrim-auth")
       setAuthContext(retrievedAuthContext)
     }
   }, [retrievedAuthContext])
-
-  // on authContext change, save to storage
-  useEffect(() => {
-    if (authContext.isAuthenticated === true) {
-      console.log("now saving @instagrim-auth to storage from authContext")
-      saveData(authContext);
-    }
-  }, [authContext])
 
   return (
     <AuthContext.Provider value={{ authContext, setAuthContext }}>
@@ -35,4 +30,4 @@ const AuthContextProvider = ({ children }) => {
   );
 };
 
-export default AuthContextProvider;
+export { AuthContextProvider, AuthContext };

@@ -1,13 +1,16 @@
 import React from "react"
-import { KeyboardAvoidingView, Text, View } from "react-native"
+import { KeyboardAvoidingView, Text, View, ActivityIndicator } from "react-native"
 import { Formik, Field } from "formik"
 import CustomInput from "../components/CustomInput"
 import CustomButton from "../components/CustomButton"
 import { logInValidation } from "../schemas/logInValidation"
 import useNavigation from "../hooks/useNavigation"
+import useLogin from "../hooks/useLogin"
 
 export default function Login({ navigation }) {
   const { navigate } = useNavigation({ navigation })
+  const { handleLogin, loading } = useLogin()
+
 
   return (
     <View className="px-6 justify-center mt-[100]">
@@ -19,16 +22,17 @@ export default function Login({ navigation }) {
         <Formik
           validationSchema={logInValidation}
           initialValues={{
-            email: "",
+            identifier: "",
             password: "",
           }}
-          onSubmit={values => console.log(values)}
+          onSubmit={formData => handleLogin(formData)}
         >
           {({ handleSubmit, isValid, values }) => (
             <>
+              {loading && <ActivityIndicator className="absolute w-full text-center mt-[155] z-30" size="large" />}
               <Field
                 component={CustomInput}
-                name="email"
+                name="identifier"
                 placeholder="Email-addresse"
                 keyboardType="email-address"
               />
@@ -39,7 +43,7 @@ export default function Login({ navigation }) {
                 secureTextEntry
               />
               <View className="flex-row mt-3 items-center">
-                <CustomButton text="Opret bruger" onPress={() => navigate({ routeName: "Register", dispatch: true })} classes="w-[44%] bg-darkGrey h-10 justify-center rounded-2xl" />
+                <CustomButton text="Opret bruger" onPress={() => navigate({ routeName: "Register", dispatch: true })} classes="w-[48%] bg-darkGrey h-10 justify-center rounded-2xl" />
                 <CustomButton text="Login" onPress={handleSubmit} classes="w-[48%] bg-primary h-12 justify-center rounded-2xl ml-auto" />
               </View>
             </>

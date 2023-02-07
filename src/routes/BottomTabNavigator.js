@@ -8,6 +8,8 @@ import Profile from "../views/Profile";
 import Login from "../views/Login";
 import Register from "../views/Register";
 import { useState } from "react";
+import { AuthContext } from "../contexts/AuthContextProvider";
+import { useContext } from "react";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +21,7 @@ const themeConfig = {
 
 // The bottom tab navigator component (routing elements)
 export default function BottomTabNavigator() {
-  const [isAuthenticated, setIsAuthenticated] = useState(null)
+  const { authContext } = useContext(AuthContext)
 
   return (
     <NavigationContainer theme={themeConfig}>
@@ -55,7 +57,7 @@ export default function BottomTabNavigator() {
           headerShown: false,
         })}
       >
-        {isAuthenticated ?
+        {authContext.isAuthenticated ?
           <>
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Post" component={Post} />

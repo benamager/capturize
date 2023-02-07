@@ -16,6 +16,8 @@ const useAxios = (url, options = {}) => {
   const [loading, setLoading] = useState(false);
 
   const request = async (method, data) => {
+    if (!data) return
+    setError(null)
     setLoading(true);
     try {
       const res = await axios({

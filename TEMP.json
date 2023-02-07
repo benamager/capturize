@@ -1,0 +1,145 @@
+"config": {
+  "adapter": [
+    "xhr",
+    "http"
+  ],
+  "data": undefined,
+  "env": {
+    "Blob": [Function Blob
+    ],
+    "FormData": [Function FormData
+    ]
+  },
+  "headers": [Object
+  ],
+  "maxBodyLength": -1,
+  "maxContentLength": -1,
+  "method": "get",
+  "timeout": 0,
+  "transformRequest": [
+    [Function transformRequest
+    ]
+  ],
+  "transformResponse": [
+    [Function transformResponse
+    ]
+  ],
+  "transitional": {
+    "clarifyTimeoutError": false,
+    "forcedJSONParsing": true,
+    "silentJSONParsing": true
+  },
+  "url": "http://10.160.211.246:1337/api/auth/local/register",
+  "validateStatus": [Function validateStatus
+  ],
+  "xsrfCookieName": "XSRF-TOKEN",
+  "xsrfHeaderName": "X-XSRF-TOKEN"
+},
+"data": {
+  "data": null,
+  "error": {
+    "details": [Object
+    ],
+    "message": "Not Found",
+    "name": "NotFoundError",
+    "status": 404
+  }
+},
+"headers": {
+  "connection": "keep-alive",
+  "content-length": "94",
+  "content-security-policy": "connect-src 'self' https:;img-src 'self' data: blob: https://dl.airtable.com;media-src 'self' data: blob:;default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'",
+  "content-type": "application/json; charset=utf-8",
+  "date": "Tue, 07 Feb 2023 11:29:03 GMT",
+  "expect-ct": "max-age=0",
+  "keep-alive": "timeout=5",
+  "referrer-policy": "no-referrer",
+  "strict-transport-security": "max-age=31536000; includeSubDomains",
+  "vary": "Origin",
+  "x-content-type-options": "nosniff",
+  "x-dns-prefetch-control": "off",
+  "x-download-options": "noopen",
+  "x-frame-options": "SAMEORIGIN",
+  "x-permitted-cross-domain-policies": "none",
+  "x-powered-by": "Strapi <strapi.io>"
+},
+"request": {
+  "DONE": 4,
+  "HEADERS_RECEIVED": 2,
+  "LOADING": 3,
+  "OPENED": 1,
+  "UNSENT": 0,
+  "_aborted": false,
+  "_cachedResponse": undefined,
+  "_hasError": false,
+  "_headers": {
+    "accept": "application/json"
+  },
+  "_incrementalEvents": false,
+  "_lowerCaseResponseHeaders": {
+    "connection": "keep-alive",
+    "content-length": "94",
+    "content-security-policy": "connect-src 'self' https:;img-src 'self' data: blob: https://dl.airtable.com;media-src 'self' data: blob:;default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Tue, 07 Feb 2023 11:29:03 GMT",
+    "expect-ct": "max-age=0",
+    "keep-alive": "timeout=5",
+    "referrer-policy": "no-referrer",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "vary": "Origin",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-powered-by": "Strapi <strapi.io>"
+  },
+  "_method": "GET",
+  "_perfKey": "network_XMLHttpRequest_http://10.160.211.246:1337/api/auth/local/register",
+  "_performanceLogger": {
+    "_closed": false,
+    "_extras": [Object
+    ],
+    "_pointExtras": [Object
+    ],
+    "_points": [Object
+    ],
+    "_timespans": [Object
+    ]
+  },
+  "_requestId": null,
+  "_response": "{\"data\":null,\"error\":{\"status\":404,\"name\":\"NotFoundError\",\"message\":\"Not Found\",\"details\":{}}}",
+  "_responseType": "",
+  "_sent": true,
+  "_subscriptions": [],
+  "_timedOut": false,
+  "_trackingName": "unknown",
+  "_url": "http://10.160.211.246:1337/api/auth/local/register",
+  "readyState": 4,
+  "responseHeaders": {
+    "Connection": "keep-alive",
+    "Content-Length": "94",
+    "Content-Security-Policy": "connect-src 'self' https:;img-src 'self' data: blob: https://dl.airtable.com;media-src 'self' data: blob:;default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'",
+    "Content-Type": "application/json; charset=utf-8",
+    "Date": "Tue, 07 Feb 2023 11:29:03 GMT",
+    "Expect-CT": "max-age=0",
+    "Keep-Alive": "timeout=5",
+    "Referrer-Policy": "no-referrer",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "Vary": "Origin",
+    "X-Content-Type-Options": "nosniff",
+    "X-DNS-Prefetch-Control": "off",
+    "X-Download-Options": "noopen",
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-Permitted-Cross-Domain-Policies": "none",
+    "X-Powered-By": "Strapi <strapi.io>"
+  },
+  "responseURL": "http://10.160.211.246:1337/api/auth/local/register",
+  "status": 404,
+  "timeout": 0,
+  "upload": {},
+  "withCredentials": true
+},
+"status": 404,
+"statusText": undefined
+}

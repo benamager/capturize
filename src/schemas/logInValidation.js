@@ -1,7 +1,7 @@
 import * as yup from "yup"
 
 export const logInValidation = yup.object().shape({
-  email: yup
+  identifier: yup
     .string()
     .email("Skriv en gyldig email-addresse.")
     .required("Email-addresse er påkrævet."),

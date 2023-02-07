@@ -1,26 +1,15 @@
 import React from "react"
-import { KeyboardAvoidingView, Text, View } from "react-native"
+import { KeyboardAvoidingView, Text, View, ActivityIndicator } from "react-native"
 import { Formik, Field } from "formik"
 import CustomInput from "../components/CustomInput"
 import CustomButton from "../components/CustomButton"
 import { signUpValidation } from "../schemas/signUpValidation"
 import useNavigation from "../hooks/useNavigation"
-import useAxios from "../hooks/useAxios"
-
-import Constants from "expo-constants";
-//console.log(Constants.expoConfig.extra.apiUrl);
+import useRegister from "../hooks/useRegister"
 
 export default function Register({ navigation }) {
   const { navigate } = useNavigation({ navigation })
-  const { response, error, loading, request } = useAxios("http://10.160.211.246:1337/api/auth/local/register");
-
-  async function handleRegister(formData) {
-    console.log("Now running handleRegister")
-    await request("post", formData);
-  }
-
-  // console.log(response)
-  // console.log(error?.response.status)
+  const { handleRegister, loading } = useRegister()
 
   return (
     <View className="px-6 justify-center mt-[100]">
@@ -42,6 +31,7 @@ export default function Register({ navigation }) {
         >
           {({ handleSubmit, isValid, values }) => (
             <>
+              {loading && <ActivityIndicator className="absolute w-full text-center mt-[230] z-30" size="large" />}
               <Field
                 component={CustomInput}
                 name="fullName"
@@ -71,8 +61,8 @@ export default function Register({ navigation }) {
                 secureTextEntry
               />
               <View className="flex-row mt-3 items-center">
-                <CustomButton text="Login" onPress={() => navigate({ routeName: "Login", dispatch: true })} classes="w-[44%] bg-darkGrey h-10 justify-center rounded-2xl" />
-                <CustomButton text="Opret bruger" onPress={handleSubmit} classes="w-[48%] bg-primary h-12 justify-center rounded-2xl ml-auto" />
+                <CustomButton text="Login" onPress={() => navigate({ routeName: "Login", dispatch: true })} classes="w-[48%] bg-darkGrey h-10 justify-center rounded-2xl" />
+                <CustomButton text="Opret nu" onPress={handleSubmit} classes="w-[48%] bg-primary h-12 justify-center rounded-2xl ml-auto" />
               </View>
             </>
           )}
