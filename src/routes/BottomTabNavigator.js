@@ -7,6 +7,7 @@ import Post from "../views/Post";
 import Profile from "../views/Profile";
 import Login from "../views/Login";
 import Register from "../views/Register";
+import { useState } from "react";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,6 +19,8 @@ const themeConfig = {
 
 // The bottom tab navigator component (routing elements)
 export default function BottomTabNavigator() {
+  const [isAuthenticated, setIsAuthenticated] = useState(null)
+
   return (
     <NavigationContainer theme={themeConfig}>
       <Tab.Navigator
@@ -52,25 +55,32 @@ export default function BottomTabNavigator() {
           headerShown: false,
         })}
       >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Post" component={Post} />
-        <Tab.Screen name="Profile" component={Profile} />
-        <Tab.Screen
-          // options={{
-          //   tabBarButton: () => null,
-          //   tabBarStyle: { display: "none" },
-          // }}
-          name="Login"
-          component={Login}
-        />
-        <Tab.Screen
-          // options={{
-          //   tabBarButton: () => null,
-          //   tabBarStyle: { display: "none" },
-          // }}
-          name="Register"
-          component={Register}
-        />
+        {isAuthenticated ?
+          <>
+            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Post" component={Post} />
+            <Tab.Screen name="Profile" component={Profile} />
+          </>
+          :
+          <>
+            <Tab.Screen
+              options={{
+                tabBarButton: () => null,
+                tabBarStyle: { display: "none" },
+              }}
+              name="Login"
+              component={Login}
+            />
+            <Tab.Screen
+              options={{
+                tabBarButton: () => null,
+                tabBarStyle: { display: "none" },
+              }}
+              name="Register"
+              component={Register}
+            />
+          </>
+        }
       </Tab.Navigator>
     </NavigationContainer>
   );

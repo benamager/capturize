@@ -1,11 +1,11 @@
-import React from 'react'
-import { KeyboardAvoidingView, Text, View } from 'react-native'
-import { Formik, Field } from 'formik'
-import CustomInput from '../components/CustomInput'
-import CustomButton from '../components/CustomButton'
+import React from "react"
+import { KeyboardAvoidingView, Text, View } from "react-native"
+import { Formik, Field } from "formik"
+import CustomInput from "../components/CustomInput"
+import CustomButton from "../components/CustomButton"
 import { signUpValidation } from "../schemas/signUpValidation"
-import useNavigation from '../hooks/useNavigation'
-import useAxios from '../hooks/useAxios'
+import useNavigation from "../hooks/useNavigation"
+import useAxios from "../hooks/useAxios"
 
 import Constants from "expo-constants";
 //console.log(Constants.expoConfig.extra.apiUrl);
@@ -28,15 +28,15 @@ export default function Register({ navigation }) {
         keyboardVerticalOffset={30}
         behavior="padding">
         <Text className="text-3xl font-bold mb-3 text-darkGrey">InstaGrim</Text>
-        <Text className="mb-12 text-darkGrey">Register new user</Text>
+        <Text className="mb-12 text-darkGrey">Opret ny bruger</Text>
         <Formik
           validationSchema={signUpValidation}
           initialValues={{
-            fullName: "Ben Nie",
-            username: "yoyo",
-            email: "yo@yo.yo",
-            password: "Yo&21GFs",
-            confirmPassword: "Yo&21GFs",
+            fullName: "",
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
           }}
           onSubmit={formData => handleRegister(formData)}
         >
@@ -45,34 +45,34 @@ export default function Register({ navigation }) {
               <Field
                 component={CustomInput}
                 name="fullName"
-                placeholder="Full Name"
+                placeholder="Fornavn og efternavn"
               />
               <Field
                 component={CustomInput}
                 name="username"
-                placeholder="Username"
+                placeholder="Brugernavn"
               />
               <Field
                 component={CustomInput}
                 name="email"
-                placeholder="Email Address"
+                placeholder="Email-addresse"
                 keyboardType="email-address"
               />
               <Field
                 component={CustomInput}
                 name="password"
-                placeholder="Password"
+                placeholder="Adgangskode"
                 secureTextEntry
               />
               <Field
                 component={CustomInput}
                 name="confirmPassword"
-                placeholder="Confirm Password"
+                placeholder="Bekræft adgangskode"
                 secureTextEntry
               />
               <View className="flex-row mt-3 items-center">
-                <CustomButton text="Login instead" onPress={() => navigate({ routeName: "Login", dispatch: true })} classes="w-[44%] bg-darkGrey h-10 justify-center rounded-2xl" />
-                <CustomButton text="Register now" onPress={handleSubmit} classes="w-[48%] bg-primary h-12 justify-center rounded-2xl ml-auto" />
+                <CustomButton text="Login" onPress={() => navigate({ routeName: "Login", dispatch: true })} classes="w-[44%] bg-darkGrey h-10 justify-center rounded-2xl" />
+                <CustomButton text="Opret bruger" onPress={handleSubmit} classes="w-[48%] bg-primary h-12 justify-center rounded-2xl ml-auto" />
               </View>
             </>
           )}
